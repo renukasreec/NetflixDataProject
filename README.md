@@ -10,4 +10,7 @@ This project follows the below steps,
 
 
 Skills and Technologies used: Pyspark,Databricks,ADF,ADLS
+
+
+
 Concepts: Activities in ADF, Linked Services,Datasets in ADF,Transformations,DLT,Unity catalog,metastore creation.
