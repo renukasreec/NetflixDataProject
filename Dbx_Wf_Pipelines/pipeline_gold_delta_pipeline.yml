@@ -1,0 +1,13 @@
+resources:
+  pipelines:
+    pipeline_gold_delta_pipeline:
+      name: Gold_delta_pipeline
+      clusters:
+        - label: default
+          node_type_id: Standard_D4s_v3
+          num_workers: 1
+      libraries:
+        - notebook:
+            path: /Users/abc@gmail.com/Netflix-Project/Gold_Layer
+      schema: dlt_schema
+      catalog: netflix_catalog

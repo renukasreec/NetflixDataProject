@@ -1,0 +1,26 @@
+resources:
+  jobs:
+    1_bronze_to_silver:
+      name: 1_bronze_to_silver
+      tasks:
+        - task_key: Lookup_Locations
+          notebook_task:
+            notebook_path: /Workspace/Users/abc@gmail.com/Netflix-Project/Parameters
+            source: WORKSPACE
+          existing_cluster_id: 0727-072815-pthlh5zv
+        - task_key: Silver
+          depends_on:
+            - task_key: Lookup_Locations
+          for_each_task:
+            inputs: "{{tasks.Lookup_Locations.values.file_array}}"
+            task:
+              task_key: Silver_iteration
+              notebook_task:
+                notebook_path: /Workspace/Users/abc@gmail.com/Netflix-Project/Silver
+                base_parameters:
+                  src_folder: "{{input.src_folder}}"
+                  tgt_folder: "{{input.tgt_folder}}"
+                source: WORKSPACE
+              existing_cluster_id: 0727-072815-pthlh5zv
+      queue:
+        enabled: true
